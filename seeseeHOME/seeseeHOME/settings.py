@@ -41,7 +41,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Python packages
+    'djangobower',
+    'rest_framework',
+
+    # Custom apps
     'users',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,8 +89,31 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+
+BOWER_INSTALLED_APPS = (
+    'angular#1.2.23',
+)
+
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/account/" # Not Implemented : should have chnage to /profile or /dashboard stuff
+
