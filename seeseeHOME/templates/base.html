@@ -1,8 +1,38 @@
 <!DOCTYPE html>
 <head>
-  <title>{% block title %}{% endblock %}</title>
+  <title>
+    {% block title %}
+        <title>
+          <h1>It's the homepage for see</h1>
+        </title>
+    {% endblock %}
+  </title>
 <body>
-    {% block content %}{% endblock %}
+  <nav>
+     {% if user.is_authenticated %}
+     <div>Welcome, {{ user.email }}</div>
+       <a href="/logout/">Logout</a>
+       <a href="/account/">Account info</a>
+     {% else %}
+       <a href="/login/">Login</a>
+       <a href="/signup/">SignUp</a>
+     {% endif %}
+   </nav>
+ 
+   <div class="container">
+     <div class="messages">
+     {% if messages %}
+       <ul class="messages">
+         {% for message in messages %}
+         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+         {% endfor %}
+       </ul>
+     {% endif %}
+   </div>
+  {% block content %}
+  {% endblock %}
 </body>
 </head>
 </html>
+
+
