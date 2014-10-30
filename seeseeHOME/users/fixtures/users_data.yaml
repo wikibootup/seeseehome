@@ -1,0 +1,5 @@
+- fields: {email: seesee@see.com, is_active: true, is_admin: false, last_login: !!timestamp '2014-10-30
+      17:44:36.856898+00:00', name: '', password: pbkdf2_sha256$12000$FZUihW1Nv3dB$1lAVy8n0NTCkLs0k0txnCBT7XWmhbjuIbsu4+YyO5SU=,
+    phonenumber: ''}
+  model: users.user
+  pk: 3
