@@ -65,3 +65,5 @@ static/
 
 # migration files
 migrations/
+
+.DS_Store
