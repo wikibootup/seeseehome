@@ -48,7 +48,6 @@ INSTALLED_APPS = (
 
     # Custom apps
     'users',
-    'api',
 )
 
 MIDDLEWARE_CLASSES = (
