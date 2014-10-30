@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<head>
-  <title>
-    {% block title %}
-        <title>
-          <h1>It's the homepage for see</h1>
-        </title>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>
+      {% block title %}
+          <title>
+            <h1>It's the homepage for see</h1>
+          </title>
+      {% endblock %}
+    </title>
+  <body>
+   <nav>
+       {% if user.is_authenticated %}
+       <div>Welcome, {{ user.email }}</div>
+         <a href="/logout/">Logout</a>
+         <a href="/account/">Account info</a>
+       {% else %}
+         <a href="/login/">Login</a>
+         <a href="/signup/">SignUp</a>
+       {% endif %}
+     </nav>
+   
+     <div class="container">
+       <div class="messages">
+       {% if messages %}
+         <ul class="messages">
+           {% for message in messages %}
+           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+           {% endfor %}
+         </ul>
+       {% endif %}
+     </div>
+    {% block content %}
     {% endblock %}
-  </title>
-<body>
-  <nav>
-     {% if user.is_authenticated %}
-     <div>Welcome, {{ user.email }}</div>
-       <a href="/logout/">Logout</a>
-       <a href="/account/">Account info</a>
-     {% else %}
-       <a href="/login/">Login</a>
-       <a href="/signup/">SignUp</a>
-     {% endif %}
-   </nav>
- 
-   <div class="container">
-     <div class="messages">
-     {% if messages %}
-       <ul class="messages">
-         {% for message in messages %}
-         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-         {% endfor %}
-       </ul>
-     {% endif %}
-   </div>
-  {% block content %}
-  {% endblock %}
-</body>
-</head>
+  </body>
+  </head>
 </html>
 
 
